@@ -8,6 +8,7 @@
 				<th data-click-to-select="true" data-sortable="true" data-field="sex">სქესი</th>
 				<th data-click-to-select="true" data-sortable="true" data-field="position">თანამდებობა</th>
 				<th data-click-to-select="true" data-sortable="true" data-field="salary">ხელფასი</th>
+				<th data-click-to-select="false" data-sortable="false" data-field="actions"><span class="sr-only">ღილაკები</span></th>
 			</tr>
 		</thead>
 	</table>
