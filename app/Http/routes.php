@@ -8,7 +8,7 @@ $app->get('statistics', ['uses' => 'HomeController@statistics', 'as' => 'statist
  * just `Route::resource('employee', 'EmployeeController')`
  * but let's stick to nikic's router. It's fast.
  */
-$app->group(['prefix' => 'employee'], function ($app) {
+$app->group(['prefix' => 'employee', 'namespace' => 'App\Http\Controllers'], function ($app) {
 	$app->get('/',         ['uses' => 'EmployeeController@index',   'as' => 'employee.index']);
 	$app->get('create',    ['uses' => 'EmployeeController@create',  'as' => 'employee.create']);
 	$app->post('/',        ['uses' => 'EmployeeController@store',   'as' => 'employee.store']);
