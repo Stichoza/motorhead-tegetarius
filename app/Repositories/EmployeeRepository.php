@@ -11,7 +11,6 @@ class EmployeeRepository extends Repository {
 
     /**
      * EmployeeRepository constructor.
-     * @internal param Container $app
      */
     public function __construct()
     {

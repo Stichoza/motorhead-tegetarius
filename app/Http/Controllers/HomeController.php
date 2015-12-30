@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employee;
 use App\Repositories\EmployeeRepository;
-use DB;
 
 class HomeController extends Controller {
 	
@@ -16,13 +14,13 @@ class HomeController extends Controller {
 	public function statistics()
 	{
 
-		$repo = new EmployeeRepository(app());
+		$repo = new EmployeeRepository();
 
-		$data['sex'] = $repo->sexStats();
-
-		$data['salary'] = $repo->salaryRanges();
-
-		$data['dates'] = $repo->registerDates();
+		$data = [
+			'sex' => $repo->sexStats(),
+			'salary' => $repo->salaryRanges(),
+			'dates' => $repo->registerDates()
+		];
 
 		dd($data);
 
