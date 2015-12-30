@@ -77,15 +77,6 @@ class HomeController extends Controller {
             $data['dates']['datasets'][0]['data'][] = $value;
         }
 
-//        $data['sex'] = array_reduce($cached['sex'], function ($carry, $item) {
-//
-//            $carry[] = [
-//                'label'
-//            ];
-//
-//            return $carry;
-//        }, []);
-
         return $data;
 
     }
