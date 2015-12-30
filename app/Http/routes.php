@@ -1,6 +1,7 @@
 <?php
 
-$app->get('/', 'HomeController@index');
+$app->get('/',          ['uses' => 'HomeController@index',      'as' => 'index']);
+$app->get('statistics', ['uses' => 'HomeController@statistics', 'as' => 'statistics']);
 
 /*
  * The following lines could be as simple as
@@ -8,13 +9,13 @@ $app->get('/', 'HomeController@index');
  * but let's stick to nikic's router. It's fast.
  */
 $app->group(['prefix' => 'employee'], function ($app) {
-	$app->get('/',         ['uses' => 'EmployeeController@index',   'as' => 'index']);
-	$app->get('create',    ['uses' => 'EmployeeController@create',  'as' => 'create']);
-	$app->post('/',        ['uses' => 'EmployeeController@store',   'as' => 'store']);
-	$app->get('{id}',      ['uses' => 'EmployeeController@show',    'as' => 'show']);
-	$app->get('{id}/edit', ['uses' => 'EmployeeController@edit',    'as' => 'edit']);
-	$app->put('{id}',      ['uses' => 'EmployeeController@update',  'as' => 'update']);
-	$app->delete('{id}',   ['uses' => 'EmployeeController@destroy', 'as' => 'destroy']);
+	$app->get('/',         ['uses' => 'EmployeeController@index',   'as' => 'employee.index']);
+	$app->get('create',    ['uses' => 'EmployeeController@create',  'as' => 'employee.create']);
+	$app->post('/',        ['uses' => 'EmployeeController@store',   'as' => 'employee.store']);
+	$app->get('{id}',      ['uses' => 'EmployeeController@show',    'as' => 'employee.show']);
+	$app->get('{id}/edit', ['uses' => 'EmployeeController@edit',    'as' => 'employee.edit']);
+	$app->put('{id}',      ['uses' => 'EmployeeController@update',  'as' => 'employee.update']);
+	$app->delete('{id}',   ['uses' => 'EmployeeController@destroy', 'as' => 'employee.destroy']);
 });
 
 
