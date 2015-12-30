@@ -1,4 +1,7 @@
 {
   "name": "motorhead-tegetarius",
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "bootstrap-table": "~1.9.1"
+  }
 }
