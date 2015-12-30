@@ -1,7 +1,8 @@
 <?php
 
-$app->get('/',          ['uses' => 'HomeController@index',      'as' => 'index']);
-$app->get('statistics', ['uses' => 'HomeController@statistics', 'as' => 'statistics']);
+$app->get('/',          ['uses' => 'HomeController@index',          'as' => 'index']);
+$app->get('stats',      ['uses' => 'HomeController@statistics',     'as' => 'statistics']);
+$app->get('stats/json', ['uses' => 'HomeController@statisticsJson', 'as' => 'statistics.json']);
 
 /*
  * The following lines could be as simple as

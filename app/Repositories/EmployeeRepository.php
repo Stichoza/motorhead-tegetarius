@@ -19,6 +19,7 @@ class EmployeeRepository extends Repository {
 
     /**
      * Return model class name
+     *
      * @return mixed
      */
     public function model() {
@@ -30,7 +31,7 @@ class EmployeeRepository extends Repository {
      *
      * @return array
      */
-    public function sexStats()
+    public function genderStats()
 	{
 		return $this->model->select('sex', DB::raw('count(*) as total'))
 			 ->groupBy('sex')

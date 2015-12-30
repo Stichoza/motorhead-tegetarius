@@ -13,6 +13,7 @@ abstract class Repository {
 
     /**
      * Repository constructor.
+     *
      * @throws Exception
      */
     public function __construct()
