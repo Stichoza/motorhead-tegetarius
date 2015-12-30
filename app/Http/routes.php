@@ -10,6 +10,7 @@ $app->get('statistics', ['uses' => 'HomeController@statistics', 'as' => 'statist
  */
 $app->group(['prefix' => 'employee', 'namespace' => 'App\Http\Controllers'], function ($app) {
 	$app->get('/',         ['uses' => 'EmployeeController@index',   'as' => 'employee.index']);
+	$app->get('json',      ['uses' => 'EmployeeController@json',    'as' => 'employee.json']);
 	$app->get('create',    ['uses' => 'EmployeeController@create',  'as' => 'employee.create']);
 	$app->post('/',        ['uses' => 'EmployeeController@store',   'as' => 'employee.store']);
 	$app->get('{id}',      ['uses' => 'EmployeeController@show',    'as' => 'employee.show']);

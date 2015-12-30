@@ -19,10 +19,7 @@ $factory->define(App\Models\Employee::class, function ($faker) {
 
 	return [
 		'name' => sprintf('%s %s', $faker->firstName($sex), $faker->lastName),
-		'sex' => '<i class="fa fa-fw fa-' . $sex . '"></i> ' . [
-			'female' => 'მდედრ.',
-			'male'   => 'მამრ.'
-		][$sex],
+		'sex' => $sex,
 		'position' => $faker->sentence(rand(1, 3)),
 		'salary' => rand(2, 80) * 100,
     ];

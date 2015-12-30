@@ -26,7 +26,7 @@
       <div class="header clearfix">
         <nav>
           <ul class="nav nav-pills pull-right">
-            <li role="presentation"><a href="{{ route('index') }}">მთავარი</a></li>
+            <li role="presentation"><a href="{{ route('employee.index') }}">მთავარი</a></li>
             <li role="presentation"><a href="{{ route('employee.create') }}">თანამშრომლის დამატება</a></li>
             <li role="presentation"><a href="{{ route('statistics') }}">სტატისტიკა</a></li>
           </ul>

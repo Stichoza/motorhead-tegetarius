@@ -8,13 +8,17 @@ class EmployeeController extends Controller {
 	
 	public function index()
 	{
-		$employees = [];
+		return view('index');
+	}
 
-		for ($i = 0; $i < 300; $i++) {
-			$employees[] = factory(Employee::class)->make();
-		}
+	public function json()
+	{
+		return Employee::all();
+	}
 
-		return $employees;
+	public function create()
+	{
+		return view('create');
 	}
 
 }
