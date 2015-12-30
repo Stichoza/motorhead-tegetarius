@@ -23,7 +23,16 @@ class EmployeeController extends Controller {
      */
 	public function json()
 	{
-		return Employee::all();
+		return Employee::all()->map(function($item, $key) {
+			$item->sex = [
+				'female' => '<i class="fa fa-fw fa-female"></i> მდედრ.',
+				'male'   => '<i class="fa fa-fw fa-male"></i> მამრ.'
+			][$item->sex];
+
+			$item->actions = view('partials.actions')->withId($item->id)->render();
+
+			return $item;
+		});
 	}
 
 	/**
@@ -34,6 +43,11 @@ class EmployeeController extends Controller {
 	public function create()
 	{
 		return view('create');
+	}
+
+	public function edit($id)
+	{
+		# code...
 	}
 
 }
