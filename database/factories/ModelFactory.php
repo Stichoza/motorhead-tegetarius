@@ -11,11 +11,15 @@
 |
 */
 
-$factory->define(App\User::class, function ($faker) {
-    return [
-        'name' => $faker->name,
-        'email' => $faker->email,
-        'password' => str_random(10),
-        'remember_token' => str_random(10),
+$factory->define(App\Employee::class, function ($faker) {
+	$sex = ['female', 'male'][rand(0, 1)];
+	return [
+		'name' => sprintf('%s %s', $faker->firstName($sex), $faker->lastName),
+		'sex' => [
+			'female' => '<i class="fa fa-fw fa-female"></i> მდედრ.',
+			'male'   => '<i class="fa fa-fw fa-male"></i> მამრ.'
+		][$sex],
+		'position' => $faker->sentence(rand(1, 3)),
+		'salary' => rand(2, 80) * 100,
     ];
 });
