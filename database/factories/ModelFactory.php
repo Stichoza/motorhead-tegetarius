@@ -11,15 +11,20 @@
 |
 */
 
-$factory->define(App\Employee::class, function ($faker) {
+$factory->define(App\Models\Employee::class, function ($faker) {
+
+	$faker = Faker\Factory::create('ka_GE');
+
 	$sex = ['female', 'male'][rand(0, 1)];
+
 	return [
 		'name' => sprintf('%s %s', $faker->firstName($sex), $faker->lastName),
-		'sex' => [
-			'female' => '<i class="fa fa-fw fa-female"></i> მდედრ.',
-			'male'   => '<i class="fa fa-fw fa-male"></i> მამრ.'
+		'sex' => '<i class="fa fa-fw fa-' . $sex . '"></i> ' . [
+			'female' => 'მდედრ.',
+			'male'   => 'მამრ.'
 		][$sex],
 		'position' => $faker->sentence(rand(1, 3)),
 		'salary' => rand(2, 80) * 100,
     ];
+
 });
