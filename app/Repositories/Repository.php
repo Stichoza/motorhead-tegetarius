@@ -4,30 +4,21 @@ namespace App\Repositories;
 
 use Exception;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Container\Container;
 
 abstract class Repository {
 
-    protected $app;
-
     protected $model;
+
+    protected $modelName;
 
     /**
      * Repository constructor.
-     * @param Container $app
+     * @throws Exception
      */
-    public function __construct(Container $app)
+    public function __construct()
     {
-        $this->app = $app;
         $this->makeModel();
     }
-
-    /**
-     * Specify Model class name
-     *
-     * @return mixed
-     */
-    abstract function model();
 
     /**
      * Make model
@@ -36,12 +27,12 @@ abstract class Repository {
      * @throws Exception
      */
     public function makeModel() {
-        $model = $this->app->make($this->model());
+        $model = new $this->modelName;
 
         if (!$model instanceof Model)
-            throw new Exception("Class {$this->model()} must be an instance of " . Model::class);
+            throw new Exception("Class {$this->modelName} must be an instance of " . Model::class);
 
-        return $this->model = $model->newQuery();
+        return $this->model = $model;
     }
 
 }

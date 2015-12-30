@@ -7,11 +7,31 @@ use DB;
 
 class EmployeeRepository extends Repository {
 
-	public function model() {
+    protected $modelName = Employee::class;
+
+    /**
+     * EmployeeRepository constructor.
+     * @internal param Container $app
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * Return model class name
+     * @return mixed
+     */
+    public function model() {
 		return Employee::class;
 	}
-	
-	public function scopeSexStats()
+
+    /**
+     * Get gender stats
+     *
+     * @return array
+     */
+    public function sexStats()
 	{
 		return $this->model->select('sex', DB::raw('count(*) as total'))
 			 ->groupBy('sex')
@@ -19,7 +39,12 @@ class EmployeeRepository extends Repository {
 			 ->all();
 	}
 
-	public function scopeSalaryRanges()
+    /**
+     * Get salary stats
+     *
+     * @return array
+     */
+    public function salaryRanges()
 	{
 		return $this->model->select('salary', DB::raw("case"
 				. " when salary between 100 and 500 then '100-500'"
@@ -32,7 +57,12 @@ class EmployeeRepository extends Repository {
 			->all();
 	}
 
-	public function scopeRegisterDates()
+    /**
+     * Get registration stats
+     *
+     * @return array
+     */
+    public function registerDates()
 	{
 		return $this->model->select('created_at', DB::raw('count(*) as count, DATE_FORMAT(created_at, "%Y-%m") as month'))
 			->groupBy(DB::raw('YEAR(created_at), MONTH(created_at)'))
