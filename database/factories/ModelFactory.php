@@ -21,7 +21,7 @@ $factory->define(App\Models\Employee::class, function ($faker) {
 		'name' => sprintf('%s %s', $faker->firstName($sex), $faker->lastName),
 		'sex' => $sex,
 		'position' => $faker->sentence(rand(1, 3)),
-		'salary' => rand(2, 80) * 100,
+		'salary' => rand(1, 30) * 100,
     ];
 
 });
