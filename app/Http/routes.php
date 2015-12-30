@@ -1,16 +1,20 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It is a breeze. Simply tell Lumen the URIs it should respond to
-| and give it the Closure to call when that URI is requested.
-|
-*/
+$app->get('/', 'HomeController@index');
 
-$app->get('/', function () use ($app) {
-    return $app->welcome();
+/*
+ * The following lines could be as simple as
+ * just `Route::resource('employee', 'EmployeeController')`
+ * but let's stick to nikic's router. It's fast.
+ */
+$app->group(['prefix' => 'employee'], function ($app) {
+	$app->get('/',         ['uses' => 'EmployeeController@index',   'as' => 'index']);
+	$app->get('create',    ['uses' => 'EmployeeController@create',  'as' => 'create']);
+	$app->post('/',        ['uses' => 'EmployeeController@store',   'as' => 'store']);
+	$app->get('{id}',      ['uses' => 'EmployeeController@show',    'as' => 'show']);
+	$app->get('{id}/edit', ['uses' => 'EmployeeController@edit',    'as' => 'edit']);
+	$app->put('{id}',      ['uses' => 'EmployeeController@update',  'as' => 'update']);
+	$app->delete('{id}',   ['uses' => 'EmployeeController@destroy', 'as' => 'destroy']);
 });
+
+
