@@ -4,6 +4,7 @@
     "bootstrap": "~3.3.6",
     "bootstrap-table": "~1.9.1",
     "jquery": "~2.1.4",
-    "bpg-nateli": "~1.0.0"
+    "bpg-nateli": "~1.0.0",
+    "font-awesome": "fontawesome#~4.5.0"
   }
 }

@@ -12,6 +12,7 @@
     <!-- Bootstrap core CSS -->
     <link href="{{ url('lib/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ url('lib/bootstrap-table/dist/bootstrap-table.min.css') }}" rel="stylesheet">
+    <link href="{{ url('lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ url('lib/bpg-nateli/css/bpg-nateli.min.css') }}" rel="stylesheet">
 
     <!-- Custom styles -->
