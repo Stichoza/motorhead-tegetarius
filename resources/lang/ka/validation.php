@@ -104,6 +104,11 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'salary'   => 'ხელფასი',
+        'name'     => 'სახელი',
+        'sex'      => 'სქესი',
+        'position' => 'თანამდებობა',
+    ],
 
 ];
