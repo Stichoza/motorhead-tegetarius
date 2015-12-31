@@ -9,6 +9,14 @@ class EmployeeRepository extends Repository {
 
     protected $modelName = Employee::class;
 
+    public static $rules = [
+        'name' => 'required',
+        'sex' => 'required|in:male,female',
+        'position' => 'required',
+        'salary' => 'required|numeric',
+        'addresses' => 'array|min:1',
+    ];
+
     /**
      * EmployeeRepository constructor.
      */
@@ -16,15 +24,6 @@ class EmployeeRepository extends Repository {
     {
         parent::__construct();
     }
-
-    /**
-     * Return model class name
-     *
-     * @return mixed
-     */
-    public function model() {
-		return Employee::class;
-	}
 
     /**
      * Get gender stats
