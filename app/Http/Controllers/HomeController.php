@@ -45,6 +45,7 @@ class HomeController extends Controller {
      */
     public function statisticsJson()
     {
+        $data = [];
 
         $faker = Factory::create();
 
@@ -78,7 +79,6 @@ class HomeController extends Controller {
         }
 
         return $data;
-
     }
 
 }
