@@ -26,9 +26,15 @@
       <div class="header clearfix">
         <nav>
           <ul class="nav nav-pills pull-right">
-            <li role="presentation"><a href="{{ route('employee.index') }}">მთავარი</a></li>
-            <li role="presentation"><a href="{{ route('employee.create') }}">თანამშრომლის დამატება</a></li>
-            <li role="presentation"><a href="{{ route('statistics') }}">სტატისტიკა</a></li>
+            <li role="presentation" class="{{ Request::is('employee') ? 'active' : '' }}">
+              <a href="{{ route('employee.index') }}">მთავარი</a>
+            </li>
+            <li role="presentation" class="{{ Request::is('employee/create') ? 'active' : '' }}">
+              <a href="{{ route('employee.create') }}">თანამშრომლის დამატება</a>
+            </li>
+            <li role="presentation" class="{{ Request::is('stats') ? 'active' : '' }}">
+              <a href="{{ route('statistics') }}">სტატისტიკა</a>
+            </li>
           </ul>
         </nav>
         <h3 class="text-muted">Motörhead Tegetarius</h3>
