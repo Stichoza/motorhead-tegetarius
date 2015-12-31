@@ -1,16 +1,50 @@
 @extends('layouts.master')
 
 @section('content')
-	<form action="{{ route('employee.store') }}" method="post">
-		
-		<input type="text" name="name" value="{{ old('name') }}">
-		
-		<select name="sex">
-			<option value="female" {{ old('sex') == 'female' ? 'selected' : null }}>მდედრობითი</option>
-			<option value="male"   {{ old('sex') == 'male'   ? 'selected' : null }}>მამრობითი</option>
-		</select>
+	<form class="form-horizontal" action="{{ route('employee.store') }}" method="post">
 
-		<input type="text" name="position" value="{{ old('position') }}">
+		@include('partials.errors')
+		
+		<div class="form-group">
+			<label for="name" class="col-sm-3 control-label">სახელი, გვარი</label>
+			<div class="col-sm-9">
+				<input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="sex" class="col-sm-3 control-label">სქესი</label>
+			<div class="col-sm-9">
+				<select name="sex" id="sex" class="form-control">
+					<option value="female" {{ old('sex') == 'female' ? 'selected' : null }}>მდედრობითი</option>
+					<option value="male"   {{ old('sex') == 'male'   ? 'selected' : null }}>მამრობითი</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="position" class="col-sm-3 control-label">თანამდებობა</label>
+			<div class="col-sm-9">
+				<input type="text" class="form-control" id="position" name="position" value="{{ old('position') }}">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="salary" class="col-sm-3 control-label">ხელფასი</label>
+			<div class="col-sm-9">
+				<input type="number" min="100" max="100000" step="50" class="form-control" id="salary" name="salary" value="{{ old('salary') }}">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-offset-6 col-sm-3">
+				<a href="{{ route('employee.index') }}" class="btn btn-block btn-default">გაუქმება</a>
+			</div>
+			<div class="col-sm-3">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				<button type="submit" class="btn btn-block btn-success">შენახვა</button>
+			</div>
+		</div>
 
 	</form>
 @stop
