@@ -4,6 +4,8 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 Dotenv::load(__DIR__.'/../');
 
+Stichoza\Phemoji\Phemoji::init();
+
 /*
 |--------------------------------------------------------------------------
 | Create The Application

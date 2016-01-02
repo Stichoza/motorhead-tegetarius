@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fcaf248f2ed934d961db2238b5a3ac8a",
-    "content-hash": "b294a830d4411fc4319af67d2e52b7ec",
+    "hash": "67d5d539467a1bd94db5bda56a5673ec",
+    "content-hash": "ad8de34050f23039f435b30d5d8d0457",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -1617,6 +1617,56 @@
                 "psr-3"
             ],
             "time": "2012-12-21 11:40:51"
+        },
+        {
+            "name": "stichoza/phemoji",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Stichoza/phemoji.git",
+                "reference": "fd8106551379eb41c65e2ba9c2ee9a4d05ad098d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Stichoza/phemoji/zipball/fd8106551379eb41c65e2ba9c2ee9a4d05ad098d",
+                "reference": "fd8106551379eb41c65e2ba9c2ee9a4d05ad098d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Stichoza\\Phemoji\\": "src/"
+                },
+                "psr-4": {
+                    "Stichoza\\Phemoji\\": "src/Stichoza/Phemoji/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Levan Velijanashvili",
+                    "email": "me@stichoza.com"
+                }
+            ],
+            "description": "PHP Emoji functions and stuff.",
+            "keywords": [
+                "emoji",
+                "emoticons",
+                "functions",
+                "helpers",
+                "php",
+                "utilites"
+            ],
+            "time": "2015-11-28 20:53:50"
         },
         {
             "name": "symfony/console",
