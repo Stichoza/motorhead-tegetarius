@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Repositories\EmployeeRepository;
+use Illuminate\Http\Request;
 
 class EmployeeController extends Controller {
 
@@ -23,7 +25,7 @@ class EmployeeController extends Controller {
      */
 	public function json()
 	{
-		return Employee::all()->map(function($item, $key) {
+		return Employee::all()->map(function($item) {
 			$item->sex = [
 				'female' => '<i class="fa fa-fw fa-female"></i> მდედრ.',
 				'male'   => '<i class="fa fa-fw fa-male"></i> მამრ.'
@@ -45,9 +47,17 @@ class EmployeeController extends Controller {
 		return view('create');
 	}
 
-	public function edit($id)
+	public function store(Request $request)
 	{
-		# code...
+        $this->validate($request, EmployeeRepository::$rules);
+		$employee = Employee::create($request->all());
+		return redirect()->route('employee.show', ['id' => $employee->id]);
+	}
+
+	public function show($id)
+	{
+		$employee = Employee::findOrFail($id);
+		return $employee;
 	}
 
 }

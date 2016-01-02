@@ -36,6 +36,47 @@
 			</div>
 		</div>
 
+		<hr>
+
+		<div class="form-group">
+			<label class="col-sm-3 control-label">მისამართ(ებ)ი</label>
+			<div class="col-sm-3">
+				<input type="text" class="form-control" placeholder="ქალაქი">
+			</div>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" placeholder="ქუჩა">
+			</div>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" placeholder="ნომერი">
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="form-group">
+			<label class="col-sm-3 control-label">კურსები</label>
+			<div class="col-sm-9">
+				<div class="form-group">
+					<div class="col-sm-12">
+						<input type="text" class="form-control" placeholder="დასახელება">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-3">
+						<input type="text" class="form-control" placeholder="დაწყება">
+					</div>
+					<div class="col-sm-3">
+						<input type="text" class="form-control" placeholder="დამთავრება">
+					</div>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" placeholder="კომენტარი">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<hr>
+
 		<div class="form-group">
 			<div class="col-sm-offset-6 col-sm-3">
 				<a href="{{ route('employee.index') }}" class="btn btn-block btn-default">გაუქმება</a>
