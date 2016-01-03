@@ -15,13 +15,13 @@ $factory->define(App\Models\Employee::class, function ($faker) {
 
 	$faker = Faker\Factory::create('ka_GE');
 
-	$sex = ['female', 'male'][rand(0, 1)];
+	$sex = ['female', 'male'][🎰(0, 1)];
 
 	return [
 		'name' => sprintf('%s %s', $faker->firstName($sex), $faker->lastName),
 		'sex' => $sex,
-		'position' => $faker->sentence(rand(1, 3)),
-		'salary' => rand(1, 30) * 100,
+		'position' => $faker->sentence(🎰(1, 3)),
+		'salary' => 🎰(1, 30) * 100,
     ];
 
 });
