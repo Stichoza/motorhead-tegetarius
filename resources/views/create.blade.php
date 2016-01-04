@@ -1,6 +1,24 @@
 @extends('layouts.master')
 
 @section('content')
+
+	<div class="holly-dollies">
+		
+		<div class="form-group" data-clone-into="funny-farm">
+			<label class="col-sm-3 control-label"></label>
+			<div class="col-sm-3">
+				<input type="text" name="" class="form-control" placeholder="ქალაქი">
+			</div>
+			<div class="col-sm-4">
+				<input type="text" name="" class="form-control" placeholder="ქუჩა">
+			</div>
+			<div class="col-sm-2">
+				<input type="text" name="" class="form-control" placeholder="ნომერი">
+			</div>
+		</div>
+
+	</div>
+
 	<form class="form-horizontal" action="{{ route('employee.store') }}" method="post">
 
 		@include('partials.errors')
@@ -38,16 +56,24 @@
 
 		<hr>
 
+		<div class="dolly-container" data-farm="funny-farm">
+			<div class="form-group">
+				<label class="col-sm-3 control-label">მისამართ(ებ)ი</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" placeholder="ქალაქი">
+				</div>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" placeholder="ქუჩა">
+				</div>
+				<div class="col-sm-2">
+					<input type="text" class="form-control" placeholder="ნომერი">
+				</div>
+			</div>
+		</div>
+
 		<div class="form-group">
-			<label class="col-sm-3 control-label">მისამართ(ებ)ი</label>
-			<div class="col-sm-3">
-				<input type="text" class="form-control" placeholder="ქალაქი">
-			</div>
-			<div class="col-sm-4">
-				<input type="text" class="form-control" placeholder="ქუჩა">
-			</div>
-			<div class="col-sm-2">
-				<input type="text" class="form-control" placeholder="ნომერი">
+			<div class="col-sm-offset-10 col-sm-2">
+				<button type="button" class="dolly-clone-trigger btn btn-default btn-block" data-trigger-cloning-in="funny-farm"><i class="fa fa-fw fa-plus"></i></button>
 			</div>
 		</div>
 
@@ -92,4 +118,5 @@
 
 @section('postscripts')
 	<script src="{{ url('js/dist/index.min.js') }}"></script>
+	<script src="{{ url('js/dist/holly-dolly.min.js') }}"></script>
 @stop
