@@ -1,14 +1,17 @@
 jQuery (_) ->
 
-	_ document
-		.on 'click', '.dolly-clone-trigger', (event) ->
+	_ '.dolly-clone-trigger'
+		.on 'click', (event) ->
 
-			farm = _(event.target).data 'trigger-cloning-in'
+			name = _(@).data 'trigger-cloning-in'
 
-			console.log farm
+			farm = _ ".dolly-container[data-farm=#{name}]"
 
-			sheep = _ ".holly-dollies > [data-clone-into=#{farm}]"
-				.clone no, no
-				.appendTo _ ".dolly-container[data-farm=#{farm}]"
+			count = 1 + farm.children().length
 
-			console.log sheep
+			sheep = _ ".holly-dollies > [data-clone-into=#{name}]"
+				.clone(no, no)[0]
+				.outerHTML
+				.replace /\{n\}/g, count
+
+			farm.append sheep

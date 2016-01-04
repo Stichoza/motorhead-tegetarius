@@ -7,13 +7,13 @@
 		<div class="form-group" data-clone-into="funny-farm">
 			<label class="col-sm-3 control-label"></label>
 			<div class="col-sm-3">
-				<input type="text" name="" class="form-control" placeholder="ქალაქი">
+				<input type="text" name="address[{n}][city]" class="form-control" placeholder="ქალაქი">
 			</div>
 			<div class="col-sm-4">
-				<input type="text" name="" class="form-control" placeholder="ქუჩა">
+				<input type="text" name="address[{n}][street]" class="form-control" placeholder="ქუჩა">
 			</div>
 			<div class="col-sm-2">
-				<input type="text" name="" class="form-control" placeholder="ნომერი">
+				<input type="text" name="address[{n}][number]" class="form-control" placeholder="ნომერი">
 			</div>
 		</div>
 
