@@ -5,7 +5,7 @@
 	<div class="holly-dollies">
 		
 		<div class="form-group" data-clone-into="funny-farm">
-			<label class="col-sm-3 control-label"></label>
+			<label class="col-sm-2 control-label"></label>
 			<div class="col-sm-3">
 				<input type="text" name="address[{n}][city]" class="form-control" placeholder="ქალაქი">
 			</div>
@@ -15,24 +15,52 @@
 			<div class="col-sm-2">
 				<input type="text" name="address[{n}][number]" class="form-control" placeholder="ნომერი">
 			</div>
+			<div class="col-sm-1">
+				<button type="button" class="dolly-clone-killer-trigger btn btn-default btn-block"><i class="fa fa-times"></i></button>
+			</div>
+		</div>
+
+		<div data-clone-into="sad-farm">
+			<label class="col-sm-2 control-label"></label>
+			<div class="col-sm-10">
+				<div class="form-group">
+					<div class="col-sm-11">
+						<input type="text" name="course[{n}][title]" class="form-control" placeholder="დასახელება">
+					</div>
+					<div class="col-sm-1">
+						<button type="button" class="dolly-clone-killer-trigger btn btn-default btn-block"><i class="fa fa-times"></i></button>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-4">
+						<input type="text" name="course[{n}][start]" class="form-control" placeholder="დაწყება (YYYY-MM-DD)">
+					</div>
+					<div class="col-sm-4">
+						<input type="text" name="course[{n}][end]" class="form-control" placeholder="დამთავრება (YYYY-MM-DD)">
+					</div>
+					<div class="col-sm-4">
+						<input type="text" name="course[{n}][comment]" class="form-control" placeholder="კომენტარი">
+					</div>
+				</div>
+			</div>
 		</div>
 
 	</div>
 
-	<form class="form-horizontal" action="{{ route('employee.store') }}" method="post">
+	<form class="form-horizontal" method="post">
 
 		@include('partials.errors')
 		
 		<div class="form-group">
-			<label for="name" class="col-sm-3 control-label">სახელი, გვარი</label>
-			<div class="col-sm-9">
+			<label for="name" class="col-sm-2 control-label">სახელი, გვარი</label>
+			<div class="col-sm-10">
 				<input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
 			</div>
 		</div>
 
 		<div class="form-group">
-			<label for="sex" class="col-sm-3 control-label">სქესი</label>
-			<div class="col-sm-9">
+			<label for="sex" class="col-sm-2 control-label">სქესი</label>
+			<div class="col-sm-10">
 				<select name="sex" id="sex" class="form-control">
 					<option value="female" {{ old('sex') == 'female' ? 'selected' : null }}>მდედრობითი</option>
 					<option value="male"   {{ old('sex') == 'male'   ? 'selected' : null }}>მამრობითი</option>
@@ -41,15 +69,15 @@
 		</div>
 
 		<div class="form-group">
-			<label for="position" class="col-sm-3 control-label">თანამდებობა</label>
-			<div class="col-sm-9">
+			<label for="position" class="col-sm-2 control-label">თანამდებობა</label>
+			<div class="col-sm-10">
 				<input type="text" class="form-control" id="position" name="position" value="{{ old('position') }}">
 			</div>
 		</div>
 
 		<div class="form-group">
-			<label for="salary" class="col-sm-3 control-label">ხელფასი</label>
-			<div class="col-sm-9">
+			<label for="salary" class="col-sm-2 control-label">ხელფასი</label>
+			<div class="col-sm-10">
 				<input type="number" min="100" max="100000" step="50" class="form-control" id="salary" name="salary" value="{{ old('salary') }}">
 			</div>
 		</div>
@@ -57,18 +85,28 @@
 		<hr>
 
 		<div class="dolly-container" data-farm="funny-farm">
-			<div class="form-group">
-				<label class="col-sm-3 control-label">მისამართ(ებ)ი</label>
-				<div class="col-sm-3">
-					<input type="text" class="form-control" placeholder="ქალაქი">
+			<?php $j = 1; ?>
+			@foreach (array_get($form, 'address', [0]) as $i => $data)
+				<div class="form-group">
+					<label class="col-sm-2 control-label">
+						@if ($i == 1)
+							მისამართ(ებ)ი
+						@endif
+					</label>
+					<div class="col-sm-3">
+						<input type="text" name="address[{{ $j }}][city]" value="{{ old('address.' . $i . '.city') }}" class="form-control" placeholder="ქალაქი">
+					</div>
+					<div class="col-sm-4">
+						<input type="text" name="address[{{ $j }}][street]" value="{{ old('address.' . $i . '.street') }}" class="form-control" placeholder="ქუჩა">
+					</div>
+					<div class="col-sm-2">
+						<input type="text" name="address[{{ $j++ }}][number]" value="{{ old('address.' . $i . '.number') }}" class="form-control" placeholder="ნომერი">
+					</div>
+					<div class="col-sm-1">
+						<button type="button" class="dolly-clone-killer-trigger btn btn-default btn-block"><i class="fa fa-times"></i></button>
+					</div>
 				</div>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" placeholder="ქუჩა">
-				</div>
-				<div class="col-sm-2">
-					<input type="text" class="form-control" placeholder="ნომერი">
-				</div>
-			</div>
+			@endforeach
 		</div>
 
 		<div class="form-group">
@@ -79,25 +117,43 @@
 
 		<hr>
 
+		<div class="form-group dolly-container" data-farm="sad-farm">
+			<?php $j = 1; ?>
+			@foreach (array_get($form, 'course', [0]) as $i => $data)
+				<div>
+					<label class="col-sm-2 control-label">
+						@if ($i == 1)
+							კურსები
+						@endif
+					</label>
+					<div class="col-sm-10">
+						<div class="form-group">
+							<div class="col-sm-11">
+								<input type="text" name="course[{{ $j }}][title]" value="{{ old('course.' . $i . '.title') }}" class="form-control" placeholder="დასახელება">
+							</div>
+							<div class="col-sm-1">
+								<button type="button" class="dolly-clone-killer-trigger btn btn-default btn-block"><i class="fa fa-times"></i></button>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-4">
+								<input type="text" name="course[{{ $j }}][start]" value="{{ old('course.' . $i . '.start') }}" class="form-control" placeholder="დაწყება (YYYY-MM-DD)">
+							</div>
+							<div class="col-sm-4">
+								<input type="text" name="course[{{ $j }}][end]" value="{{ old('course.' . $i . '.end') }}" class="form-control" placeholder="დამთავრება (YYYY-MM-DD)">
+							</div>
+							<div class="col-sm-4">
+								<input type="text" name="course[{{ $j++ }}][comment]" value="{{ old('course.' . $i . '.comment') }}" class="form-control" placeholder="კომენტარი">
+							</div>
+						</div>
+					</div>
+				</div>
+			@endforeach
+		</div>
+
 		<div class="form-group">
-			<label class="col-sm-3 control-label">კურსები</label>
-			<div class="col-sm-9">
-				<div class="form-group">
-					<div class="col-sm-12">
-						<input type="text" class="form-control" placeholder="დასახელება">
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-sm-3">
-						<input type="text" class="form-control" placeholder="დაწყება">
-					</div>
-					<div class="col-sm-3">
-						<input type="text" class="form-control" placeholder="დამთავრება">
-					</div>
-					<div class="col-sm-6">
-						<input type="text" class="form-control" placeholder="კომენტარი">
-					</div>
-				</div>
+			<div class="col-sm-offset-10 col-sm-2">
+				<button type="button" class="dolly-clone-trigger btn btn-default btn-block" data-trigger-cloning-in="sad-farm"><i class="fa fa-fw fa-plus"></i></button>
 			</div>
 		</div>
 

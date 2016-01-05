@@ -1,5 +1,12 @@
 jQuery (_) ->
 
+	_ document
+		.on 'click', '.dolly-clone-killer-trigger', (event) ->
+			_ event.target
+				.closest '.dolly-container > *'
+				.remove()
+
+
 	_ '.dolly-clone-trigger'
 		.on 'click', (event) ->
 
