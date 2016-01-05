@@ -90,6 +90,7 @@ class EmployeeRepository extends Repository {
     {
         if ($id) {
             $employee = Employee::findOrFail($id);
+            $employee->fill($data);
         } else {
             $employee = Employee::create($data);
         }
@@ -105,6 +106,7 @@ class EmployeeRepository extends Repository {
             $address->employee_id = $employee->id;
             $address->save();
         }
+
         foreach (array_get($data, 'course', []) as $key => $d) {
             if (empty($d['title']) && empty($d['start']) && empty($d['end'])) {
                 continue;
@@ -113,6 +115,8 @@ class EmployeeRepository extends Repository {
             $course->employee_id = $employee->id;
             $course->save();
         }
+
+        $employee->save();
 
         return $employee;
     }

@@ -66,25 +66,34 @@ class EmployeeController extends Controller {
 
 		$form = array_merge($modelData, $request->session()->get('_old_input', []));
 
-		return $request->session()->has('pop')
-			? view('create')->withForm($form)
-			: redirect()->route('employee.edit', ['id' => $id])
+		if ($request->session()->has('pop')) {
+			return view('create')
+				->withForm($form)
+				->withCompact(👍);
+		} else {
+			$request->session()->reflash();
+			return redirect()->route('employee.edit', ['id' => $id])
 				->withInput($form)
-				->withPop(true);
+				->withPop(👍);
+		}
 	}
 
 	public function store(Request $request)
 	{
         $this->validate($request, EmployeeRepository::rules($request->all()));
         $employee = EmployeeRepository::save($request->all());
-		return redirect()->route('employee.show', ['id' => $employee->id]);
+		return redirect()
+			->route('employee.index')
+			->with('message', 'messages.employee.created');
 	}
 
 	public function update(Request $request, $id)
 	{
         $this->validate($request, EmployeeRepository::rules($request->all()));
-        EmployeeRepository::save($request->all(), $id);
-		return redirect()->route('employee.edit', ['id' => $id]);
+        $employee = EmployeeRepository::save($request->all(), $id);
+		return redirect()
+			->route('employee.edit', ['id' => $id])
+			->with('message', 'messages.employee.updated');
 	}
 
 	public function show($id)

@@ -89,7 +89,7 @@
 			@foreach (array_get($form, 'address', [0]) as $i => $data)
 				<div class="form-group">
 					<label class="col-sm-2 control-label">
-						@if ($i == 1)
+						@if ($j == 1)
 							მისამართ(ებ)ი
 						@endif
 					</label>
@@ -122,7 +122,7 @@
 			@foreach (array_get($form, 'course', [0]) as $i => $data)
 				<div>
 					<label class="col-sm-2 control-label">
-						@if ($i == 1)
+						@if ($j == 1)
 							კურსები
 						@endif
 					</label>

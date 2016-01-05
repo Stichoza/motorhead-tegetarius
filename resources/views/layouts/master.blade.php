@@ -23,28 +23,36 @@
   <body>
 
     <div class="container">
-      <div class="header clearfix">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation" class="{{ Request::is('employee') ? 'active' : '' }}">
-              <a href="{{ route('employee.index') }}">მთავარი</a>
-            </li>
-            <li role="presentation" class="{{ Request::is('employee/create') ? 'active' : '' }}">
-              <a href="{{ route('employee.create') }}">თანამშრომლის დამატება</a>
-            </li>
-            <li role="presentation" class="{{ Request::is('stats') ? 'active' : '' }}">
-              <a href="{{ route('statistics') }}">სტატისტიკა</a>
-            </li>
-          </ul>
-        </nav>
-        <h3 class="text-muted">Motörhead Tegetarius</h3>
-      </div>
+      @if (empty($compact) || !$compact)
+        <div class="header clearfix">
+          <nav>
+            <ul class="nav nav-pills pull-right">
+              <li role="presentation" class="{{ Request::is('employee') ? 'active' : '' }}">
+                <a href="{{ route('employee.index') }}">მთავარი</a>
+              </li>
+              <li role="presentation" class="{{ Request::is('employee/create') ? 'active' : '' }}">
+                <a href="{{ route('employee.create') }}">თანამშრომლის დამატება</a>
+              </li>
+              <li role="presentation" class="{{ Request::is('stats') ? 'active' : '' }}">
+                <a href="{{ route('statistics') }}">სტატისტიკა</a>
+              </li>
+            </ul>
+          </nav>
+          <h3 class="text-muted">Motörhead Tegetarius</h3>
+        </div>
+      @endif
+
+      @if (session()->has('message'))
+        <div class="alert alert-info">{{ trans(session('message')) }}</div>
+      @endif
 
       @yield('content')
 
-      <footer class="footer">
-        <p>&copy; {{ date('Y') }} მე.</p>
-      </footer>
+      @if (empty($compact) || !$compact)
+        <footer class="footer">
+          <p>&copy; {{ date('Y') }} მე.</p>
+        </footer>
+      @endif
 
     </div> <!-- /container -->
 
