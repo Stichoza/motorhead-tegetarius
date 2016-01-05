@@ -19,6 +19,12 @@ class EmployeeRepository extends Repository {
         'address' => 'required|array|min:1',
     ];
 
+    /**
+     * Generates rules
+     *
+     * @param array $input Input data array
+     * @return array
+     */
     public static function rules($input = [])
     {
         $rules = self::$rules;
@@ -86,6 +92,13 @@ class EmployeeRepository extends Repository {
 			->all();
 	}
 
+    /**
+     * Save a model with it's relations.
+     *
+     * @param $data
+     * @param null $id
+     * @return static
+     */
     public static function save($data, $id = null)
     {
         if ($id) {
@@ -95,7 +108,7 @@ class EmployeeRepository extends Repository {
             $employee = Employee::create($data);
         }
 
-        Address::whereEmployeeId($employee->id)->delete();
+        Address::whereEmployeeId($employee->id)->delete(); // flush
         Course::whereEmployeeId($employee->id)->delete();
 
         foreach (array_get($data, 'address', []) as $key => $d) {

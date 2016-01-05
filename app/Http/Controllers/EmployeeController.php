@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Address;
-use App\Models\Course;
 use App\Models\Employee;
 use App\Repositories\EmployeeRepository;
 use Illuminate\Http\Request;
@@ -50,7 +48,14 @@ class EmployeeController extends Controller {
 		return view('create')->withForm($form);
 	}
 
-	public function edit(Request $request, $id)
+    /**
+     * Show editing view (for popup)
+     *
+     * @param Request $request
+     * @param $id
+     * @return mixed
+     */
+    public function edit(Request $request, $id)
 	{
 		$employee = Employee::with('addresses', 'courses')->findOrFail($id);
 
@@ -69,16 +74,22 @@ class EmployeeController extends Controller {
 		if ($request->session()->has('pop')) {
 			return view('create')
 				->withForm($form)
-				->withCompact(👍);
+				->withCompact(👍); // It's just a thumps-up emoji
 		} else {
 			$request->session()->reflash();
 			return redirect()->route('employee.edit', ['id' => $id])
 				->withInput($form)
-				->withPop(👍);
+				->withPop(👍); // It's just a thumps-up emoji
 		}
 	}
 
-	public function store(Request $request)
+    /**
+     * Store created model
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(Request $request)
 	{
         $this->validate($request, EmployeeRepository::rules($request->all()));
         $employee = EmployeeRepository::save($request->all());
@@ -87,7 +98,14 @@ class EmployeeController extends Controller {
 			->with('message', 'messages.employee.created');
 	}
 
-	public function update(Request $request, $id)
+    /**
+     * Update existing model
+     *
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request, $id)
 	{
         $this->validate($request, EmployeeRepository::rules($request->all()));
         $employee = EmployeeRepository::save($request->all(), $id);
@@ -96,12 +114,25 @@ class EmployeeController extends Controller {
 			->with('message', 'messages.employee.updated');
 	}
 
-	public function show($id)
+    /**
+     * Just dump a json of an object
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function show($id)
 	{
-		return Employee::findOrFail($id);
+		return Employee::with('addresses', 'courses')->findOrFail($id);
 	}
 
-	public function destroy(Request $request, $id)
+    /**
+     * This is sparta!!!
+     *
+     * @param Request $request
+     * @param $id
+     * @return string
+     */
+    public function destroy(Request $request, $id)
 	{
 		if (Employee::findOrFail($id)->delete()) {
 			return trans('messages.employee.deleted');
