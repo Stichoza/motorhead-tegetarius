@@ -17,7 +17,7 @@ $app->group(['prefix' => 'employee', 'namespace' => 'App\Http\Controllers'], fun
 	$app->get('{id}',       ['uses' => 'EmployeeController@show',    'as' => 'employee.show']);
 	$app->get('{id}/edit',  ['uses' => 'EmployeeController@edit',    'as' => 'employee.edit']);
 	$app->post('{id}/edit', ['uses' => 'EmployeeController@update',  'as' => 'employee.update']);
-	$app->delete('{id}',    ['uses' => 'EmployeeController@destroy', 'as' => 'employee.destroy']);
+	$app->get('{id}/delete',    ['uses' => 'EmployeeController@destroy', 'as' => 'employee.destroy']);
 });
 
 

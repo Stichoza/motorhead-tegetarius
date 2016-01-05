@@ -101,4 +101,11 @@ class EmployeeController extends Controller {
 		return Employee::findOrFail($id);
 	}
 
+	public function destroy(Request $request, $id)
+	{
+		if (Employee::findOrFail($id)->delete()) {
+			return trans('messages.employee.deleted');
+		}
+	}
+
 }

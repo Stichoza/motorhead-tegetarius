@@ -160,10 +160,16 @@
 		<hr>
 
 		<div class="form-group">
-			<div class="col-sm-offset-6 col-sm-3">
-				<a href="{{ route('employee.index') }}" class="btn btn-block btn-default">გაუქმება</a>
-			</div>
-			<div class="col-sm-3">
+			@if (isset($form['id']))
+				<div class="col-sm-3 pull-right">
+					<a href="{{ route('employee.destroy', ['id' => $form['id']]) }}" class="btn btn-block btn-danger">წაშლა</a>
+				</div>
+			@else
+				<div class="col-sm-3 pull-right">
+					<a href="{{ route('employee.index') }}" class="btn btn-block btn-default">გაუქმება</a>
+				</div>
+			@endif
+			<div class="col-sm-3 pull-right">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<button type="submit" class="btn btn-block btn-success">შენახვა</button>
 			</div>
