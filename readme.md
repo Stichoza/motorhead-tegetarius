@@ -21,7 +21,6 @@ Just a demo app for interview at Tegeta Motors.
 
 ## Setting up
 
- - Clone repo
  - Copy `.env.example` to `.env` and configure database, cache, session, etc drivers (you can set `session` and `cache` drivers to `file` instead of `redis` or `memcached`).
  - Install PHP dependencies `composer install`
  - Node development dependencies `npm install`
