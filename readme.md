@@ -26,7 +26,7 @@ Just a demo app for interview at Tegeta Motors.
  - Install PHP dependencies `composer install`
  - Node development dependencies `npm install`
  - Front-end libraries and assets `bower install`
- - Build raw (CoffeeScript, Stylus) files `gulp build`
+ - Build raw (CoffeeScript, Stylus) files `gulp build` or run a watcher task `gulp watch`
  - Run database migrations `php artisan migrate` (remember to set database config correctly in `.env` file)
  - Run a local server `php artisan serve --port=8888`
 
