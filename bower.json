@@ -6,6 +6,7 @@
     "jquery": "~2.1.4",
     "bpg-nateli": "~1.0.0",
     "font-awesome": "fontawesome#~4.5.0",
-    "Chart.js": "~1.0.2"
+    "Chart.js": "~1.0.2",
+    "fancybox": "~2.1.5"
   }
 }

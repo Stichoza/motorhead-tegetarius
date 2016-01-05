@@ -14,6 +14,7 @@
     <link href="{{ url('lib/bootstrap-table/dist/bootstrap-table.min.css') }}" rel="stylesheet">
     <link href="{{ url('lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ url('lib/bpg-nateli/css/bpg-nateli.min.css') }}" rel="stylesheet">
+    <link href="{{ url('lib/fancybox/source/jquery.fancybox.css') }}" rel="stylesheet">
 
     <!-- Custom styles -->
     <link href="{{ url('css/dist/main.min.css') }}" rel="stylesheet">
@@ -61,6 +62,7 @@
     @yield('prescripts')
     <script src="{{ url('lib/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ url('lib/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url('lib/fancybox/source/jquery.fancybox.pack.js') }}"></script>
     <script src="{{ url('lib/bootstrap-table/dist/bootstrap-table.min.js') }}"></script>
     <script src="{{ url('lib/bootstrap-table/dist/locale/bootstrap-table-ka-GE.min.js') }}"></script>
     @yield('postscripts')

@@ -24,10 +24,10 @@
 			<label class="col-sm-2 control-label"></label>
 			<div class="col-sm-10">
 				<div class="form-group">
-					<div class="col-sm-11">
+					<div class="col-sm-10">
 						<input type="text" name="course[{n}][title]" class="form-control" placeholder="დასახელება">
 					</div>
-					<div class="col-sm-1">
+					<div class="col-sm-2">
 						<button type="button" class="dolly-clone-killer-trigger btn btn-default btn-block"><i class="fa fa-times"></i></button>
 					</div>
 				</div>
@@ -128,10 +128,10 @@
 					</label>
 					<div class="col-sm-10">
 						<div class="form-group">
-							<div class="col-sm-11">
+							<div class="col-sm-10">
 								<input type="text" name="course[{{ $j }}][title]" value="{{ old('course.' . $i . '.title') }}" class="form-control" placeholder="დასახელება">
 							</div>
-							<div class="col-sm-1">
+							<div class="col-sm-2">
 								<button type="button" class="dolly-clone-killer-trigger btn btn-default btn-block"><i class="fa fa-times"></i></button>
 							</div>
 						</div>

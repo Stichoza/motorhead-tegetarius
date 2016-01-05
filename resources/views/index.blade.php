@@ -16,4 +16,5 @@
 
 @section('postscripts')
 	<script src="{{ url('js/dist/index.min.js') }}"></script>
+	<script>$('.popup').fancybox()</script>
 @stop
