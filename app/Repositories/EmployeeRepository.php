@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use App\Models\Address;
+use App\Models\Course;
 use App\Models\Employee;
 use DB;
 
@@ -9,13 +11,28 @@ class EmployeeRepository extends Repository {
 
     protected $modelName = Employee::class;
 
-    public static $rules = [
+    private static $rules = [
         'name' => 'required',
         'sex' => 'required|in:male,female',
         'position' => 'required',
         'salary' => 'required|numeric',
-        'addresses' => 'array|min:1',
+        'address' => 'required|array|min:1',
     ];
+
+    public static function rules($input = [])
+    {
+        $rules = self::$rules;
+        if (empty($input['address'])) {
+            $input['address'] = [1 => []];
+        }
+        foreach ($input['address'] as $key => $value) {
+            $rules['address.' . $key . '.city'] = 'required';
+            $rules['address.' . $key . '.street'] = 'required';
+            $rules['address.' . $key . '.number'] = 'required';
+            break;
+        }
+        return $rules;
+    }
 
     /**
      * EmployeeRepository constructor.
@@ -68,5 +85,36 @@ class EmployeeRepository extends Repository {
 			->lists('count', 'month')
 			->all();
 	}
+
+    public static function save($data, $id = null)
+    {
+        if ($id) {
+            $employee = Employee::findOrFail($id);
+        } else {
+            $employee = Employee::create($data);
+        }
+
+        Address::whereEmployeeId($employee->id)->delete();
+        Course::whereEmployeeId($employee->id)->delete();
+
+        foreach (array_get($data, 'address', []) as $key => $d) {
+            if (empty($d['city']) && empty($d['street']) && empty($d['number'])) {
+                continue;
+            }
+            $address = new Address($d);
+            $address->employee_id = $employee->id;
+            $address->save();
+        }
+        foreach (array_get($data, 'course', []) as $key => $d) {
+            if (empty($d['title']) && empty($d['start']) && empty($d['end'])) {
+                continue;
+            }
+            $course = new Course($d);
+            $course->employee_id = $employee->id;
+            $course->save();
+        }
+
+        return $employee;
+    }
 	
 }
