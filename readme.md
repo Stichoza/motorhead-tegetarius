@@ -33,4 +33,3 @@ Nothing interesting, just playing with Lumen.
 
 The app uses 3 minute caching for statistics. Set `cache` driver to `array` in config to disable cache and see updates immediately.
 
-I have already set up a tunnel to my local server. https://tegeta.localtunnel.me should be available if my computer is connected to network.
