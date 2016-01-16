@@ -7,8 +7,8 @@ use Carbon\Carbon;
 use Faker\Factory;
 use Illuminate\Support\Facades\Cache;
 
-class HomeController extends Controller {
-
+class HomeController extends Controller
+{
     private $repo;
 
     /**
@@ -20,7 +20,7 @@ class HomeController extends Controller {
     }
 
     /**
-     * Redirect from homepage
+     * Redirect from homepage.
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -30,16 +30,17 @@ class HomeController extends Controller {
     }
 
     /**
-     * Render statistics page
+     * Render statistics page.
      *
      * @return \Illuminate\View\View
      */
-    public function statistics() {
+    public function statistics()
+    {
         return view('statistics');
     }
 
     /**
-     * Get stats JSON
+     * Get stats JSON.
      *
      * @return array
      */
@@ -53,7 +54,7 @@ class HomeController extends Controller {
             return [
                 'gender' => $this->repo->genderStats(),
                 'salary' => $this->repo->salaryRanges(),
-                'dates' => $this->repo->registerDates()
+                'dates'  => $this->repo->registerDates(),
             ];
         });
 
@@ -67,7 +68,7 @@ class HomeController extends Controller {
 
         foreach ($cached['salary'] as $label => $value) {
             $data['salary'][] = [
-                'label' => '$' . $label,
+                'label' => '$'.$label,
                 'value' => $value,
                 'color' => $faker->hexColor,
             ];
@@ -80,5 +81,4 @@ class HomeController extends Controller {
 
         return $data;
     }
-
 }
