@@ -6,11 +6,10 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-
-	public function boot()
-	{
-		app('translator')->setLocale('ka');
-	}
+    public function boot()
+    {
+        app('translator')->setLocale('ka');
+    }
 
     /**
      * Register any application services.
